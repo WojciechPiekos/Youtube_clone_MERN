@@ -8,17 +8,18 @@ import {
   likeVideo,
   dislikeVideo,
 } from "../controllers/userController.js";
+import verifyToken from "../utils/verifyToken.js";
 
 const router = express.Router();
 
 // update user
-router.put("/:id", updateUser);
+router.put("/:id", verifyToken, updateUser);
 
 // delete user
-router.delete("/:id", deleteUser);
+router.delete("/:id", verifyToken, deleteUser);
 
 // get a user
-router.get("/find/:id", getUser);
+router.get("/find/:id", verifyToken, getUser);
 
 // subscribe a user
 router.put("/sub/:id", subscribeUser)

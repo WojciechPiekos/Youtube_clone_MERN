@@ -16,3 +16,4 @@
 20231029	13:38:46	ac1b70f9-fefe-4845-8527-95949dde6581	Error: E11000 duplicate key error collection: WojciechTube.users index: img_1 dup key: { img: null }	POST	/api/auth/signup	undefined
 20231029	14:45:17	f18fa121-e144-452a-9aca-5b0f1113fbc7	Error: User not found!	POST	/api/auth/signin	undefined
 20231029	15:01:06	dabc17b7-f5dc-4333-8969-2cb61ba4c4a9	Error: User not found!	POST	/api/auth/signin	undefined
+20231029	16:20:52	5d7acef1-0ad1-4882-b184-3d4fa3bdcfa2	Error: You can update only your account!	PUT	/api/users/653e5367867e63d55f025722	undefined
