@@ -1,0 +1,18 @@
+20231029	12:58:09	b643bdd8-48e4-47de-a28a-54831427cd58	Error: All fileds are nessesary (name, password, email)	POST	/api/auth/signup	undefined
+20231029	13:10:21	18508061-4e73-4e4e-991a-e8288b39af0b	Error: Name or Email are not uniqe)	POST	/api/auth/signup	undefined
+20231029	13:10:52	9d0fa89e-fcb7-4727-ba64-3f74e43c3951	Error: Name or Email are not uniqe)	POST	/api/auth/signup	undefined
+20231029	13:11:08	166b383a-f149-4b60-b20a-5972583ef0ea	Error: Name or Email are not uniqe)	POST	/api/auth/signup	undefined
+20231029	13:15:51	a31b154c-6724-4dfb-82b0-c351763a078c	Error: Name or Email are not uniqe)	POST	/api/auth/signup	undefined
+20231029	13:16:20	dd346383-f39a-4906-89b0-f9d1c53e370e	Error: Name or Email are not uniqe)	POST	/api/auth/signup	undefined
+20231029	13:23:08	21330e82-0958-430b-9a31-d96e52d48dbb	Error: User validation failed: password: Path `password` is required.	POST	/api/auth/signup	undefined
+20231029	13:23:44	8ed9d715-29a3-4c56-bcb4-c39c54ed4562	Error: req.status is not a function	POST	/api/auth/signup	undefined
+20231029	13:24:23	175d6877-daf6-4c31-8062-5975831055e6	Error: Name or Email are not uniqe)	POST	/api/auth/signup	undefined
+20231029	13:25:46	a8e6680a-faec-4dad-b6b8-c0abe5899bb1	Error: E11000 duplicate key error collection: WojciechTube.users index: img_1 dup key: { img: null }	POST	/api/auth/signup	undefined
+20231029	13:26:50	71e1c4f5-9eb1-4224-aa22-c31d382860ad	Error: E11000 duplicate key error collection: WojciechTube.users index: img_1 dup key: { img: null }	POST	/api/auth/signup	undefined
+20231029	13:29:32	7f26ce83-064c-459c-9945-163d86c68531	Error: User.create(...).exec is not a function	POST	/api/auth/signup	undefined
+20231029	13:30:25	0e937214-24fe-4653-8c25-424b186af825	Error: E11000 duplicate key error collection: WojciechTube.users index: img_1 dup key: { img: null }	POST	/api/auth/signup	undefined
+20231029	13:35:40	4de0ed13-b763-4cb2-bf41-bb89df86ace9	Error: E11000 duplicate key error collection: WojciechTube.users index: img_1 dup key: { img: null }	POST	/api/auth/signup	undefined
+20231029	13:36:49	78daa706-4be1-4ec1-a87f-997a9ff2aa32	Error: E11000 duplicate key error collection: WojciechTube.users index: img_1 dup key: { img: null }	POST	/api/auth/signup	undefined
+20231029	13:38:46	ac1b70f9-fefe-4845-8527-95949dde6581	Error: E11000 duplicate key error collection: WojciechTube.users index: img_1 dup key: { img: null }	POST	/api/auth/signup	undefined
+20231029	14:45:17	f18fa121-e144-452a-9aca-5b0f1113fbc7	Error: User not found!	POST	/api/auth/signin	undefined
+20231029	15:01:06	dabc17b7-f5dc-4333-8969-2cb61ba4c4a9	Error: User not found!	POST	/api/auth/signin	undefined

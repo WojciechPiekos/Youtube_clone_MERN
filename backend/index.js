@@ -3,11 +3,13 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import path from "path";
+import cookieParser from "cookie-parser";
 
 import connectDB from "./config/dbCon.js";
 import corsOptions from "./config/corsOptions.js";
 import usersRoutes from "./routes/users.js";
 import videosRoutes from "./routes/videos.js";
+import authRoutes from "./routes/auth.js";
 import commentRoutes from "./routes/comments.js";
 import { logger, logEvents } from "./middleware/logger.js";
 import errorHandler from "./middleware/errorHandler.js";
@@ -16,13 +18,16 @@ const app = express();
 dotenv.config();
 
 const __dirname = path.resolve();
+console.log(__dirname);
 
 connectDB();
 
 app.use(logger);
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(cookieParser());
 
+app.use("/api/auth", authRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/videos", videosRoutes);
 app.use("/api/comments", commentRoutes);
