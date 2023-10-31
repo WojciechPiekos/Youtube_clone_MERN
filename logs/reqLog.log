@@ -37,3 +37,10 @@
 20231029	16:20:52	183c0d24-ee16-4979-a331-e9dda4e60b47	PUT	/api/users/653e5367867e63d55f025722	undefined
 20231029	16:21:37	f9aaa277-6ba0-49e1-b6e3-5f14e525713c	PUT	/api/users/653e5367867e63d55f025722	undefined
 20231029	16:23:39	23e36a18-a01d-402d-a869-490b7baea8b0	PUT	/api/users/653e5367867e63d55f025722	undefined
+20231031	15:54:12	2f470ef4-666e-4c51-a2ce-97adfd1dba78	POST	/api/comments	undefined
+20231031	15:55:34	fb36ee9a-9031-4ac4-9ab0-a484d54a5cad	POST	/api/comments/6540f271044bf8d1fbc56c95	undefined
+20231031	15:58:02	83894389-d087-4498-ae9b-8fcd25582b83	POST	/api/comments	undefined
+20231031	15:58:58	93aba31d-37dd-4b39-90fc-e83474cbfe5a	POST	/api/comments	undefined
+20231031	15:59:04	7ce2aff8-a62f-4653-a760-f37e908d6380	POST	/api/comments	undefined
+20231031	15:59:08	a0db7903-019f-47f3-8991-3f213d2e5acc	POST	/api/comments	undefined
+20231031	16:00:19	80e8096e-34d1-4199-992d-0fb67b7b121a	GET	/api/comments/6540f271044bf8d1fbc56c95	undefined
