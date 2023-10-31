@@ -44,3 +44,10 @@
 20231031	15:59:04	7ce2aff8-a62f-4653-a760-f37e908d6380	POST	/api/comments	undefined
 20231031	15:59:08	a0db7903-019f-47f3-8991-3f213d2e5acc	POST	/api/comments	undefined
 20231031	16:00:19	80e8096e-34d1-4199-992d-0fb67b7b121a	GET	/api/comments/6540f271044bf8d1fbc56c95	undefined
+20231031	16:22:36	99b726fd-10be-4651-bed2-0273525e298a	POST	/api/users/like/6540f271044bf8d1fbc56c95	undefined
+20231031	16:23:03	ccd2c625-6979-4e05-b45a-d273dbf1529e	PUT	/api/users/like/6540f271044bf8d1fbc56c95	undefined
+20231031	16:27:06	f0aa4bdb-424b-4320-b0cc-26767463d7b2	PUT	/api/users/like/6540edc0bb148dab6837803c	undefined
+20231031	16:29:49	aaa64ed1-a60e-4cb5-be10-fa4e27b6e0b0	PUT	/api/users/like/6540edc0bb148dab6837803c	undefined
+20231031	16:31:21	d8421d48-4988-454b-9774-0ce19ea83112	PUT	/api/users/like/6540eefa0e27379b9b74de22	undefined
+20231031	16:32:37	6633707a-f637-4cab-854b-f7a3fe4e4b8b	PUT	/api/users/like/6540eefa0e27379b9b74de22	undefined
+20231031	16:35:18	ad4d37fd-9d1c-417e-806d-849109574cda	PUT	/api/users/dislike/6540f271044bf8d1fbc56c95	undefined
