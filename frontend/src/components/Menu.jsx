@@ -20,8 +20,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Container = styled.div`
   flex: 1;
-  background-color: ${({theme}) => theme.bg};
-  height: 100vh;
+  background-color: ${({theme}) => theme.bgLighter};
+  height: 100%;
   color: ${({theme}) => theme.text};
   font-size: 14px;
   position: sticky;
