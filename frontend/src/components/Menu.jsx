@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import WojciechTube from "../img/logo.png";
 import HomeIcon from "@mui/icons-material/Home";
 import ExploreIcon from "@mui/icons-material/Explore";
@@ -16,13 +17,13 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import FlagIcon from "@mui/icons-material/Flag";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const Container = styled.div`
   flex: 1;
-  background-color: ${({theme}) => theme.bgLighter};
-  height: 100%;
-  color: ${({theme}) => theme.text};
+  background-color: ${({ theme }) => theme.bgLighter};
+  height: 105vh;
+  color: ${({ theme }) => theme.text};
   font-size: 14px;
   position: sticky;
   top: 0;
@@ -54,10 +55,10 @@ const Item = styled.div`
 
 const Hr = styled.hr`
   margin: 15px 0px;
-  border: 0.5px solid ${({theme}) => theme.soft};
+  border: 0.5px solid ${({ theme }) => theme.soft};
 `;
 
-const Login = styled.div``
+const Login = styled.div``;
 
 const Button = styled.button`
   padding: 5px 15px;
@@ -71,23 +72,25 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 5px;
-`
+`;
 
 const Title = styled.h2`
   font-weight: 500;
   font-size: 12px;
   color: #aaaaaa;
   margin-bottom: 20px;
-`
+`;
 
 export default function Menu({ darkMode, setDarkMode }) {
   return (
     <Container>
       <Wrapper>
-        <Logo>
-          <Img src={WojciechTube} />
-          WojciechTube
-        </Logo>
+        <Link to={"/"} style={{ textDecoration: "none", color: "inherit" }}>
+          <Logo>
+            <Img src={WojciechTube} />
+            WojciechTube
+          </Logo>
+        </Link>
         <Item>
           <HomeIcon />
           Home
@@ -113,14 +116,12 @@ export default function Menu({ darkMode, setDarkMode }) {
         <Login>
           Sign in to like videos, comment, and subscribe.
           <Button>
-            <AccountCircleIcon/>
+            <AccountCircleIcon />
             SIGN IN
           </Button>
         </Login>
-        <Hr/>
-        <Title>
-          BEST OF WojciechTube
-        </Title>
+        <Hr />
+        <Title>BEST OF WojciechTube</Title>
         <Item>
           <MusicVideoIcon />
           Music
@@ -160,7 +161,7 @@ export default function Menu({ darkMode, setDarkMode }) {
         </Item>
         <Item onClick={() => setDarkMode(!darkMode)}>
           <LightbulbIcon />
-          Light Mode
+          {darkMode ? "Light" : "Dark"}
         </Item>
       </Wrapper>
     </Container>
