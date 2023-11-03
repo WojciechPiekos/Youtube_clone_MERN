@@ -32,7 +32,7 @@ router.get("/find/:id", getVideo);
 router.put("/view/:id", viewVideo)
 
 // trend Video
-router.get("/trend/:id", trendVideo)
+router.get("/trend", trendVideo)
 
 // get random video
 router.get("/random", randomVideo)

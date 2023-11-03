@@ -95,18 +95,24 @@ export default function Menu({ darkMode, setDarkMode }) {
             WojciechTube
           </Logo>
         </Link>
-        <Item>
-          <HomeIcon />
-          Home
-        </Item>
-        <Item>
-          <ExploreIcon />
-          Explore
-        </Item>
-        <Item>
-          <SubscriptionsIcon />
-          Subscriptions
-        </Item>
+        <Link to="/" style={{textDecoration: "none", color: "inherit"}}>
+          <Item>
+            <HomeIcon />
+            Home
+          </Item>
+        </Link>
+        <Link to="/trends" style={{textDecoration: "none", color: "inherit"}}>
+          <Item>
+            <ExploreIcon />
+            Explore
+          </Item>
+        </Link>
+        <Link to="/subscriptions" style={{textDecoration: "none", color: "inherit"}}>
+          <Item>
+            <SubscriptionsIcon />
+            Subscriptions
+          </Item>
+        </Link>
         <Hr />
         <Item>
           <VideoLibraryIcon />
