@@ -5,6 +5,7 @@ import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import ReplyIcon from "@mui/icons-material/Reply";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import Comments from "../components/Comments";
+import Card from "../components/Card"
 
 const Container = styled.div`
   display: flex;
@@ -159,7 +160,14 @@ export default function Video() {
         <Hr />
         <Comments/>
       </Content>
-      <Recomendation>recomendation</Recomendation>
+      <Recomendation>
+        <Card type="sm"/>
+        <Card type="sm"/>
+        <Card type="sm"/>
+        <Card type="sm"/>
+        <Card type="sm"/>
+        <Card type="sm"/>
+      </Recomendation>
     </Container>
   );
 }
