@@ -43,7 +43,8 @@ const getUser = async (req, res, next) => {
     if (!user) {
       next(customError(404, "User not found", req, res));
     }
-    res.status(200).json(user);
+    const { password, ...rest } = user._doc
+    res.status(200).json(rest);
   } catch (error) {
     next(customError(error.code, error.message, req, res));
   }
