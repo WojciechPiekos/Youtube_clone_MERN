@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch } from "react-redux"
 import { loginError, loginStart, loginSuccess } from "../redux/user/userSlice";
-
+import { auth, provider } from "../firebase";
+import { signInWithPopup } from "firebase/auth"
 
 const Container = styled.div`
   display: flex;
@@ -88,6 +89,14 @@ const handleLogin = async (e) => {
     }
 }
 
+const signInWithGoogle = () => {
+  signInWithPopup(auth,provider).then((result) => {
+    console.log(result)
+  }).catch((err) => {
+    
+  })
+}
+
   return (
     <Container>
       <Wrapper>
@@ -103,6 +112,8 @@ const handleLogin = async (e) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button onClick={handleLogin}>SIGN IN</Button>
+        <Title>or</Title>
+        <Button onClick={signInWithGoogle}>SIGN IN WITH GOOGLE </Button>
         <Title>or</Title>
         <Input
           placeholder="username"

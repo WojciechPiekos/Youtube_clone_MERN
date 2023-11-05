@@ -26,3 +26,5 @@
 20231105	09:29:09	14077d67-fc42-4ed9-b432-3100e6b18b74	Error: Name or Email are not uniqe)	POST	/api/auth/signup	undefined
 20231105	09:29:29	1734068f-8aed-4aba-9b13-c1d1d4e12c4d	Error: Name or Email are not uniqe)	POST	/api/auth/signup	undefined
 20231105	09:29:38	0811f2fd-6b75-464b-ac3b-3466410c181d	Error: Name or Email are not uniqe)	POST	/api/auth/signup	undefined
+20231105	14:54:20	abfc061c-242e-4857-a743-85fa6ddba8ba	Error: You are not authenticated	GET	/api/videos/sub	undefined
+20231105	14:54:20	bbe87bc3-46b1-4891-b97b-544098ea9c3d	Error: You are not authenticated	GET	/api/videos/sub	undefined
