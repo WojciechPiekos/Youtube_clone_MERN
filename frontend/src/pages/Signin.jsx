@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useDispatch } from "react-redux"
+import { loginError, loginStart, loginSuccess } from "../redux/user/userSlice";
+
 
 const Container = styled.div`
   display: flex;
@@ -69,19 +72,19 @@ export default function Signin() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error,setError] = useState('')
+
+  const dispatch = useDispatch()
 
 const handleLogin = async (e) => {
     e.preventDefault()
+    dispatch(loginStart())
     try {
-        setError("")
         const res = await axios.post("/api/auth/signin", {
             name, password
         })
-        console.log(res.data)
+        dispatch(loginSuccess(res.data))
     } catch (error) {
-        console.log(error)
-        setError(error.message)
+        dispatch(loginError())
     }
 }
 
@@ -108,12 +111,12 @@ const handleLogin = async (e) => {
         <Input
           type="email"
           placeholder="email"
-          nChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <Input
           type="password"
           placeholder="password"
-          nChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <Button>SIGN UP</Button>
       </Wrapper>

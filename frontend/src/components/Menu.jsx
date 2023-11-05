@@ -18,6 +18,7 @@ import FlagIcon from "@mui/icons-material/Flag";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   flex: 1;
@@ -51,9 +52,9 @@ const Item = styled.div`
   gap: 20px;
   cursor: pointer;
   padding: 7.5px 0px;
-  
+
   &:hover {
-    background-color: ${({theme}) => theme.soft};
+    background-color: ${({ theme }) => theme.soft};
   }
 `;
 
@@ -86,6 +87,8 @@ const Title = styled.h2`
 `;
 
 export default function Menu({ darkMode, setDarkMode }) {
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
     <Container>
       <Wrapper>
@@ -95,19 +98,22 @@ export default function Menu({ darkMode, setDarkMode }) {
             WojciechTube
           </Logo>
         </Link>
-        <Link to="/" style={{textDecoration: "none", color: "inherit"}}>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
           <Item>
             <HomeIcon />
             Home
           </Item>
         </Link>
-        <Link to="/trends" style={{textDecoration: "none", color: "inherit"}}>
+        <Link to="/trends" style={{ textDecoration: "none", color: "inherit" }}>
           <Item>
             <ExploreIcon />
             Explore
           </Item>
         </Link>
-        <Link to="/subscriptions" style={{textDecoration: "none", color: "inherit"}}>
+        <Link
+          to="/subscriptions"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
           <Item>
             <SubscriptionsIcon />
             Subscriptions
@@ -123,16 +129,20 @@ export default function Menu({ darkMode, setDarkMode }) {
           History
         </Item>
         <Hr />
-        <Login>
-          Sign in to like videos, comment, and subscribe.
-          <Link to="/signin" style={{textDecoration: "none"}}>
-            <Button>
-              <AccountCircleIcon />
-              SIGN IN
-            </Button>
-          </Link>
-        </Login>
-        <Hr />
+        { !currentUser && (
+          <>
+            <Login>
+              Sign in to like videos, comment, and subscribe.
+              <Link to="/signin" style={{ textDecoration: "none" }}>
+                <Button>
+                  <AccountCircleIcon />
+                  SIGN IN
+                </Button>
+              </Link>
+            </Login>
+            <Hr />
+          </>
+        )}
         <Title>BEST OF WojciechTube</Title>
         <Item>
           <MusicVideoIcon />

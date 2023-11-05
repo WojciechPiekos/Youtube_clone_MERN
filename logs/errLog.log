@@ -23,3 +23,6 @@
 20231104	11:02:33	714699e5-2f65-432e-a71c-076fe2a3db5f	Error: Wrong credentials!	POST	/api/auth/signin	http://localhost:5173
 20231104	11:03:27	3ead2f4c-56b5-4aa1-9fe9-1c13c8da7d8f	Error: Not allowed by CORS	POST	/api/auth/signin	http://localhost:5173
 20231104	11:05:17	52fe634c-dc7a-46dc-b131-3310620d88bc	Error: Wrong credentials!	POST	/api/auth/signin	http://localhost:5173
+20231105	09:29:09	14077d67-fc42-4ed9-b432-3100e6b18b74	Error: Name or Email are not uniqe)	POST	/api/auth/signup	undefined
+20231105	09:29:29	1734068f-8aed-4aba-9b13-c1d1d4e12c4d	Error: Name or Email are not uniqe)	POST	/api/auth/signup	undefined
+20231105	09:29:38	0811f2fd-6b75-464b-ac3b-3466410c181d	Error: Name or Email are not uniqe)	POST	/api/auth/signup	undefined
