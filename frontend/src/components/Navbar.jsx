@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import SearchIcon from "@mui/icons-material/Search";
-import { useSelector } from "react-redux";
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../redux/user/userSlice"
+import axios from "axios"
+
 
 const Container = styled.div`
   position: sticky;
@@ -23,7 +27,7 @@ const Wrapper = styled.div`
 `;
 
 const Search = styled.div`
-  width: 40%;
+  max-width: 40%;
   position: absolute;
   left: 0px;
   right: 0px;
@@ -56,9 +60,21 @@ const Button = styled.button`
   gap: 5px;
 `;
 
+const UserDiv = styled.div`
+  max-width: 20%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 0px;
+  padding-top: 12px;
+  padding-right: 10px;
+`
+
 const User = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
+  padding: 0 10px;
   gap: 10px;
   font-weight: 500;
   color: ${({ theme }) => theme.text};
@@ -71,8 +87,55 @@ const Avatar = styled.img`
   background-color: #999;
 `;
 
+const Name = styled.span`
+  cursor: pointer;
+  &:hover {
+    opacity: 70%;
+  }
+`
+
+const Menu = styled.div`
+  width: 100%;
+  margin-top: 12px;
+  padding: 0 10px;
+  background: ${({theme}) => theme.bgLighter};
+  color: ${({theme}) => theme.text};
+  border-radius: 5px;
+`
+const Item = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0px;
+`
+
+const MenuFunction = styled.span`
+  cursor: pointer;
+  &:hover {
+    opacity: 70%;
+  }
+`
+
 export default function Navbar() {
   const { currentUser } = useSelector((state) => state.user);
+  const [menu, setMenu] = useState(false)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleMenu = () => {
+    setMenu((prev) => !prev)
+  }
+
+  const handleLogout = async () => {
+    try {
+      await axios.post("/api/auth/signout")
+      dispatch(logout())
+      navigate("/")
+      setMenu(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <Container>
@@ -82,11 +145,24 @@ export default function Navbar() {
           <SearchIcon />
         </Search>
         {currentUser ? (
-          <User>
-            <VideoCallOutlinedIcon />
-            <Avatar />
-            {currentUser.name}
-          </User>
+          <UserDiv>
+            <User>
+              <VideoCallOutlinedIcon />
+              <Avatar src={currentUser.img}/>
+              <Name onClick={handleMenu}>
+                {currentUser.name}
+              </Name>
+            </User>
+            {menu && (
+              <Menu>
+                <Item>
+                  <LogoutIcon style={{width: "25px", height: "25px"}} />
+                  <MenuFunction onClick={handleLogout}>
+                    Logout
+                  </MenuFunction>
+                </Item>
+              </Menu>)}
+          </UserDiv>
         ) : (
           <Link to="/signin" style={{ textDecoration: "none" }}>
             <Button>

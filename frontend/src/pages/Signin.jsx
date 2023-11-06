@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch } from "react-redux"
 import { loginError, loginStart, loginSuccess } from "../redux/user/userSlice";
@@ -75,6 +75,7 @@ export default function Signin() {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
 const handleLogin = async (e) => {
     e.preventDefault()
@@ -84,16 +85,25 @@ const handleLogin = async (e) => {
             name, password
         })
         dispatch(loginSuccess(res.data))
+        navigate("/")
     } catch (error) {
         dispatch(loginError())
     }
 }
 
-const signInWithGoogle = () => {
+const signInWithGoogle = async () => {
+  dispatch(loginStart())
   signInWithPopup(auth,provider).then((result) => {
-    console.log(result)
+    axios.post("/api/auth/google", {
+      name: result.user.displayName,
+      email: result.user.email,
+      img: result.user.photoURL
+    }).then((res) => {
+      dispatch(loginSuccess(res.data))
+      navigate("/")
+    })
   }).catch((err) => {
-    
+    dispatch(loginError())
   })
 }
 
