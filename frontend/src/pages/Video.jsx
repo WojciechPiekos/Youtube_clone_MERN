@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import ReplyIcon from "@mui/icons-material/Reply";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import Comments from "../components/Comments";
-import Card from "../components/Card"
+import Card from "../components/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import { fetchSuccess } from "../redux/video/videoSlice";
+import { dislike, fetchSuccess, like } from "../redux/video/videoSlice";
 import { format } from "timeago.js";
 
 const Container = styled.div`
@@ -70,34 +72,34 @@ const Channel = styled.div`
 const ChannelInfo = styled.div`
   display: flex;
   gap: 20px;
-`
+`;
 
 const Image = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-`
+`;
 
 const ChannelDetails = styled.div`
   display: flex;
   flex-direction: column;
   color: ${({ theme }) => theme.text};
-`
+`;
 
 const ChannelName = styled.span`
   font-weight: 500;
-`
+`;
 
 const ChnnelCounter = styled.span`
   margin-top: 5px;
   margin-bottom: 20px;
   color: ${({ theme }) => theme.textSoft};
   font-size: 12px;
-`
+`;
 
 const Description = styled.p`
   font-size: 14px;
-`
+`;
 
 const Subscribe = styled.button`
   background-color: #cc1a00;
@@ -108,45 +110,63 @@ const Subscribe = styled.button`
   height: max-content;
   padding: 10px 20px;
   cursor: pointer;
-
-`
+`;
 
 export default function Video() {
+  const { currentUser } = useSelector((state) => state.user);
+  const { currentVideo } = useSelector((state) => state.video);
+  const dispatch = useDispatch();
 
-  const { currentUser } = useSelector((state) => state.user)
-  const { currentVideo } = useSelector((state) => state.video)
-  const dispatch = useDispatch()
+  const path = useLocation().pathname.split("/")[2];
 
-  const path = useLocation().pathname.split("/")[2]
-
-  const [channel,setChannel] = useState({})
+  const [channel, setChannel] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const videoRes = await axios.get(`/api/videos/find/${path}`)
-        dispatch(fetchSuccess(videoRes.data))
+        const videoRes = await axios.get(`/api/videos/find/${path}`);
+        dispatch(fetchSuccess(videoRes.data));
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
-    fetchData()
-  },[path,dispatch])
+    };
+    fetchData();
+  }, [path, dispatch]);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         if (currentVideo.userId) {
-          console.log(currentVideo.userId)
-          const channelRes = await axios.get(`/api/users/find/${currentVideo.userId}`)
-          setChannel(channelRes.data)
+          console.log(currentVideo.userId);
+          const channelRes = await axios.get(
+            `/api/users/find/${currentVideo.userId}`
+          );
+          setChannel(channelRes.data);
         }
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
+    };
+    fetchUser();
+  }, [currentVideo.userId]);
+
+  const handleLike = async () => {
+    try {
+      await axios.put(`/api/users/like/${currentVideo._id}`)
+      dispatch(like(currentUser._id))
+    } catch (error) {
+      console.log(error)
     }
-    fetchUser()
-  },[currentVideo.userId])
+  }
+
+  const handleDislike = async () => {
+    try {
+      await axios.put(`/api/users/dislike/${currentVideo._id}`)
+      dispatch(dislike(currentUser._id))
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <Container>
@@ -164,14 +184,24 @@ export default function Video() {
         </VideoWrapper>
         <Title>{currentVideo.title}</Title>
         <Details>
-          <Info>{currentVideo.views} views &middot; {format(currentVideo.createdAt)} </Info>
+          <Info>
+            {currentVideo.views} views &middot; {format(currentVideo.createdAt)}{" "}
+          </Info>
           <Buttons>
-            <Button>
-              <ThumbUpOutlinedIcon />
+            <Button onClick={handleLike}>
+              {currentVideo.likes?.includes(currentUser._id) ? (
+                <ThumbUpIcon />
+              ) : (
+                <ThumbUpOutlinedIcon />
+              )}
               {currentVideo.likes?.length}
             </Button>
-            <Button>
-              <ThumbDownOffAltIcon />
+            <Button onClick={handleDislike}>
+              {currentVideo.dislikes?.includes(currentUser._id) ? (
+                <ThumbDownIcon />
+              ) : (
+                <ThumbDownOffAltIcon />
+              )}
               {currentVideo.dislikes?.length}
             </Button>
             <Button>
@@ -191,15 +221,13 @@ export default function Video() {
             <ChannelDetails>
               <ChannelName>{channel.name}</ChannelName>
               <ChnnelCounter>{channel.subscribers} subscribers</ChnnelCounter>
-              <Description>
-                {currentVideo.desc}
-              </Description>
+              <Description>{currentVideo.desc}</Description>
             </ChannelDetails>
           </ChannelInfo>
           <Subscribe>SUBSCRIBE</Subscribe>
         </Channel>
         <Hr />
-        <Comments/>
+        <Comments />
       </Content>
       {/*<Recomendation>
         <Card type="sm"/>
