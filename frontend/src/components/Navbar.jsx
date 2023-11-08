@@ -147,7 +147,6 @@ export default function Navbar() {
         {currentUser ? (
           <UserDiv>
             <User>
-              <VideoCallOutlinedIcon />
               <Avatar src={currentUser.img}/>
               <Name onClick={handleMenu}>
                 {currentUser.name}
@@ -159,6 +158,12 @@ export default function Navbar() {
                   <LogoutIcon style={{width: "25px", height: "25px"}} />
                   <MenuFunction onClick={handleLogout}>
                     Logout
+                  </MenuFunction>
+                </Item>
+                <Item>
+                  <VideoCallOutlinedIcon />
+                  <MenuFunction>
+                    Upload Video
                   </MenuFunction>
                 </Item>
               </Menu>)}

@@ -1,5 +1,7 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { format } from "timeago.js";
 
 const Container = styled.div`
   display: flex;
@@ -32,14 +34,29 @@ const Text = styled.span`
   font-size: 14px;  
 `
 
-export default function Comment() {
+export default function Comment({ comment }) {
+
+  const [user,setUser] = useState({})
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const userRes = await axios.get(`/api/users/find/${comment.userId}`)
+      setUser(userRes.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchUsers()
+  },[comment.userId])
+
   return (
   <Container>
-    <Avatar src="https://samequizy.pl/wp-content/uploads/2021/07/19/images_bb8855c27de3.jpg" />
+    <Avatar src={user.img}/>
     <Details>
-        <Name>Wojciech Piękoś <Date>1 day ago</Date></Name>
+        <Name>{user.name} <Date>{format(comment.createdAt)}</Date></Name>
         <Text>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum expedita reiciendis iusto veritatis repellendus a repellat ab nesciunt quia quod labore, libero ullam voluptas quam, distinctio debitis totam deleniti est?
+            {comment.desc}
         </Text>
     </Details>
   </Container>
