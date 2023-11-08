@@ -80,3 +80,37 @@
 20231106	14:14:05	a5de082c-5b10-4936-99af-218c68905c2c	Error: User not found	GET	/api/users/find/6540f0b44a2ee84fb7b07c86	undefined
 20231106	14:14:31	cd70db59-0df2-4a7b-94b9-f180443ca7ac	Error: User not found	GET	/api/users/find/6540f0b44a2ee84fb7b07c86	undefined
 20231106	14:14:31	3c3ca7e9-519a-4a00-9a0c-39912f3882d3	Error: User not found	GET	/api/users/find/6540f0b44a2ee84fb7b07c86	undefined
+20231108	09:52:34	698b3203-4a62-4d5d-8986-e2f9d14ee9ea	Error: User not found	GET	/api/users/find/6540f0b44a2ee84fb7b07c86	undefined
+20231108	09:52:34	8d8ab316-49b0-443c-867e-71828409c02a	Error: User not found	GET	/api/users/find/6540f0b44a2ee84fb7b07c86	undefined
+20231108	09:52:46	da10a33c-ab6f-4086-a50c-c1d9332d94c1	Error: User not found	GET	/api/users/find/6540f0b44a2ee84fb7b07c86	undefined
+20231108	09:52:46	4841aceb-bc29-4e73-b7e7-a1ad77d2178d	Error: User not found	GET	/api/users/find/6540f0b44a2ee84fb7b07c86	undefined
+20231108	10:50:04	fbfe6d77-49b4-4a3b-aea6-29d147232efc	Error: User not found	GET	/api/users/find/6540f0b44a2ee84fb7b07c86	undefined
+20231108	10:50:04	62846771-5669-410f-abc7-19e787b1ce61	Error: User not found	GET	/api/users/find/6540f0b44a2ee84fb7b07c86	undefined
+20231108	11:24:14	1e004d67-5774-4f07-b223-91a05ed35ae8	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:27:33	79c5b355-8355-4fff-bd61-a392c525256a	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:27:33	1d537f92-67bb-4ef9-8481-cc34ff6f4a56	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:28:11	357d4bf9-429c-49c0-b0f2-76027fa4ef5b	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:28:28	8c88d5b6-857c-428a-acdb-24e2a7aec395	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:28:28	0c40ea2d-6ec7-40d1-86f0-578697560c6f	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:29:33	1cdd535e-6ae8-4de1-9e34-78b2e6d5b301	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:29:33	78a4014f-affb-484b-8447-446759a0fd25	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:30:12	39ba118a-c4e7-48a0-9893-a89124ddad15	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:30:12	4ae7f8f3-a934-4005-ab8b-e6146b50c582	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:31:38	12698cb2-5610-4843-89be-831a59d12b9e	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:41:09	13764b39-7fbd-4270-8714-c56ce78cc1e8	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:42:17	6067f6d8-1e59-495a-8652-40a9006b81e5	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:42:17	9383cbe6-9d53-4dd8-9f34-eb52e5e58751	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:42:39	de567dc8-41f0-48f5-972f-d3c84f8067a2	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:42:39	ecb1637f-a572-48d2-8486-7b22d0640bc9	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:44:59	b9a2bab1-fc77-4a9f-aa33-551a18ee322e	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:44:59	4c95b69a-4919-4fe2-b675-5b4d48c94273	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:58:22	f57d3d66-faf9-44fe-b3e1-61dcf93b81ce	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:58:22	5039c5e0-d08d-46d8-bdfa-8d03dd5dd5f4	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:59:54	6c7cabca-5111-4363-bc3f-143f74d798bf	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	11:59:54	33c7eef0-2bdd-48f4-af67-094a5104f633	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	12:00:02	c903f550-00f1-411d-9585-568d2676e13c	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	12:00:02	2a49cdbb-7882-4a98-a685-0ce8e7ac473b	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	12:00:54	e8d7c43d-366e-423f-bb49-51d6a820d135	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	12:00:54	eaf84a40-97b4-4348-8224-a5a5f7fd16e2	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	12:03:17	5155cea8-9981-4573-92fc-87c55b396bb2	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
+20231108	12:03:17	a06d948d-dae5-477d-898f-fcb69edf5894	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined

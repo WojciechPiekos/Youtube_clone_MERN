@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
@@ -6,6 +6,11 @@ import ReplyIcon from "@mui/icons-material/Reply";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import Comments from "../components/Comments";
 import Card from "../components/Card"
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
+import { fetchSuccess } from "../redux/video/videoSlice";
+import { format } from "timeago.js";
 
 const Container = styled.div`
   display: flex;
@@ -107,6 +112,42 @@ const Subscribe = styled.button`
 `
 
 export default function Video() {
+
+  const { currentUser } = useSelector((state) => state.user)
+  const { currentVideo } = useSelector((state) => state.video)
+  const dispatch = useDispatch()
+
+  const path = useLocation().pathname.split("/")[2]
+
+  const [channel,setChannel] = useState({})
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const videoRes = await axios.get(`/api/videos/find/${path}`)
+        dispatch(fetchSuccess(videoRes.data))
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchData()
+  },[path,dispatch])
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        if (currentVideo.userId) {
+          console.log(currentVideo.userId)
+          const channelRes = await axios.get(`/api/users/find/${currentVideo.userId}`)
+          setChannel(channelRes.data)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchUser()
+  },[currentVideo.userId])
+
   return (
     <Container>
       <Content>
@@ -121,17 +162,17 @@ export default function Video() {
             allowFullScreen
           ></iframe>
         </VideoWrapper>
-        <Title>Test Video</Title>
+        <Title>{currentVideo.title}</Title>
         <Details>
-          <Info>660.908 views &middot; 1 day ago </Info>
+          <Info>{currentVideo.views} views &middot; {format(currentVideo.createdAt)} </Info>
           <Buttons>
             <Button>
               <ThumbUpOutlinedIcon />
-              Like
+              {currentVideo.likes?.length}
             </Button>
             <Button>
               <ThumbDownOffAltIcon />
-              Dislike
+              {currentVideo.dislikes?.length}
             </Button>
             <Button>
               <ReplyIcon />
@@ -146,12 +187,12 @@ export default function Video() {
         <Hr />
         <Channel>
           <ChannelInfo>
-            <Image src="https://samequizy.pl/wp-content/uploads/2021/07/19/images_bb8855c27de3.jpg" />
+            <Image src={channel.img} />
             <ChannelDetails>
-              <ChannelName>WojciechTube</ChannelName>
-              <ChnnelCounter>200k subscribers</ChnnelCounter>
+              <ChannelName>{channel.name}</ChannelName>
+              <ChnnelCounter>{channel.subscribers} subscribers</ChnnelCounter>
               <Description>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima, reprehenderit qui. Harum voluptates pariatur expedita soluta numquam maxime, sint labore, perferendis rerum in neque recusandae cupiditate nemo excepturi sapiente perspiciatis.
+                {currentVideo.desc}
               </Description>
             </ChannelDetails>
           </ChannelInfo>
@@ -160,14 +201,14 @@ export default function Video() {
         <Hr />
         <Comments/>
       </Content>
-      <Recomendation>
+      {/*<Recomendation>
         <Card type="sm"/>
         <Card type="sm"/>
         <Card type="sm"/>
         <Card type="sm"/>
         <Card type="sm"/>
         <Card type="sm"/>
-      </Recomendation>
+  </Recomendation>*/}
     </Container>
   );
 }
