@@ -13,6 +13,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { dislike, fetchSuccess, like } from "../redux/video/videoSlice";
 import { format } from "timeago.js";
+import { subscription } from "../redux/user/userSlice";
 
 const Container = styled.div`
   display: flex;
@@ -112,6 +113,12 @@ const Subscribe = styled.button`
   cursor: pointer;
 `;
 
+const VideoFrame = styled.video`
+  max-height: 720px;
+  width: 100%;
+  object-fit: cover;
+`
+
 export default function Video() {
   const { currentUser } = useSelector((state) => state.user);
   const { currentVideo } = useSelector((state) => state.video);
@@ -152,17 +159,28 @@ export default function Video() {
 
   const handleLike = async () => {
     try {
-      await axios.put(`/api/users/like/${currentVideo._id}`)
-      dispatch(like(currentUser._id))
+      await axios.put(`/api/users/like/${currentVideo._id}`);
+      dispatch(like(currentUser._id));
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const handleDislike = async () => {
     try {
-      await axios.put(`/api/users/dislike/${currentVideo._id}`)
-      dispatch(dislike(currentUser._id))
+      await axios.put(`/api/users/dislike/${currentVideo._id}`);
+      dispatch(dislike(currentUser._id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubscribe = async () => {
+    try {
+      currentUser.subscribedUsers.includes(channel._id) ? 
+      await axios.put(`/api/users/unsub/${channel._id}`) :
+      await axios.put(`/api/users/sub/${channel._id}`)
+      dispatch(subscription(channel._id))
     } catch (error) {
       console.log(error)
     }
@@ -172,15 +190,7 @@ export default function Video() {
     <Container>
       <Content>
         <VideoWrapper>
-          <iframe
-            width="100%"
-            height="720"
-            src="https://www.youtube.com/embed/k3Vfj-e1Ma4"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+          <VideoFrame src={currentVideo.videoUrl}/>
         </VideoWrapper>
         <Title>{currentVideo.title}</Title>
         <Details>
@@ -224,7 +234,11 @@ export default function Video() {
               <Description>{currentVideo.desc}</Description>
             </ChannelDetails>
           </ChannelInfo>
-          <Subscribe>SUBSCRIBE</Subscribe>
+          <Subscribe onClick={handleSubscribe}>
+            {currentUser.subscribedUsers?.includes(channel._id)
+              ? "SUBSCRIBED"
+              : "SUBCSCIBE"}
+          </Subscribe>
         </Channel>
         <Hr />
         <Comments />
