@@ -4,11 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import SearchIcon from "@mui/icons-material/Search";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../redux/user/userSlice"
-import axios from "axios"
-
+import { logout } from "../redux/user/userSlice";
+import axios from "axios";
+import Upload from "./Upload";
 
 const Container = styled.div`
   position: sticky;
@@ -68,7 +68,7 @@ const UserDiv = styled.div`
   top: 0px;
   padding-top: 12px;
   padding-right: 10px;
-`
+`;
 
 const User = styled.div`
   display: flex;
@@ -92,91 +92,93 @@ const Name = styled.span`
   &:hover {
     opacity: 70%;
   }
-`
+`;
 
 const Menu = styled.div`
   width: 100%;
   margin-top: 12px;
   padding: 0 10px;
-  background: ${({theme}) => theme.bgLighter};
-  color: ${({theme}) => theme.text};
+  background: ${({ theme }) => theme.bgLighter};
+  color: ${({ theme }) => theme.text};
   border-radius: 5px;
-`
+`;
 const Item = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 10px 0px;
-`
-
-const MenuFunction = styled.span`
   cursor: pointer;
   &:hover {
     opacity: 70%;
   }
-`
+`;
+
+const MenuFunction = styled.span`
+`;
 
 export default function Navbar() {
   const { currentUser } = useSelector((state) => state.user);
-  const [menu, setMenu] = useState(false)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const [menu, setMenu] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleMenu = () => {
-    setMenu((prev) => !prev)
-  }
+    setMenu((prev) => !prev);
+  };
 
   const handleLogout = async () => {
     try {
-      await axios.post("/api/auth/signout")
-      dispatch(logout())
-      navigate("/")
-      setMenu(false)
+      await axios.post("/api/auth/signout");
+      dispatch(logout());
+      navigate("/");
+      setMenu(false);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
-    <Container>
-      <Wrapper>
-        <Search>
-          <Input placeholder="Search..." />
-          <SearchIcon />
-        </Search>
-        {currentUser ? (
-          <UserDiv>
-            <User>
-              <Avatar src={currentUser.img}/>
-              <Name onClick={handleMenu}>
-                {currentUser.name}
-              </Name>
-            </User>
-            {menu && (
-              <Menu>
-                <Item>
-                  <LogoutIcon style={{width: "25px", height: "25px"}} />
-                  <MenuFunction onClick={handleLogout}>
-                    Logout
-                  </MenuFunction>
-                </Item>
-                <Item>
-                  <VideoCallOutlinedIcon />
-                  <MenuFunction>
-                    Upload Video
-                  </MenuFunction>
-                </Item>
-              </Menu>)}
-          </UserDiv>
-        ) : (
-          <Link to="/signin" style={{ textDecoration: "none" }}>
-            <Button>
-              <AccountCircleIcon />
-              SIGN IN
-            </Button>
-          </Link>
-        )}
-      </Wrapper>
-    </Container>
+    <>
+      <Container>
+        <Wrapper>
+          <Search>
+            <Input placeholder="Search..." />
+            <SearchIcon />
+          </Search>
+          {currentUser ? (
+            <UserDiv>
+              <User>
+                <Avatar src={currentUser.img} />
+                <Name onClick={handleMenu}>{currentUser.name}</Name>
+              </User>
+              {menu && (
+                <Menu>
+                  <Item>
+                    <LogoutIcon style={{ width: "25px", height: "25px" }} />
+                    <MenuFunction onClick={handleLogout}>Logout</MenuFunction>
+                  </Item>
+                  <Item onClick={() => setOpen(true)}>
+                    <VideoCallOutlinedIcon />
+                    <MenuFunction>
+                      Upload Video
+                    </MenuFunction>
+                  </Item>
+                </Menu>
+              )}
+            </UserDiv>
+          ) : (
+            <Link to="/signin" style={{ textDecoration: "none" }}>
+              <Button>
+                <AccountCircleIcon />
+                SIGN IN
+              </Button>
+            </Link>
+          )}
+        </Wrapper>
+      </Container>
+      { open && <Upload setOpen={setOpen} setMenu={setMenu} /> }
+    </>
   );
 }

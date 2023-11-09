@@ -70,6 +70,7 @@ export default function Comments({ videoId }) {
         desc: newComment,
       });
       setNewData(res.data);
+      setNewComment("")
     } catch (error) {
       console.log(error);
     }
@@ -82,6 +83,7 @@ export default function Comments({ videoId }) {
         <Input
           placeholder="Add a comment..."
           onChange={(e) => setNewComment(e.target.value)}
+          value={newComment}
         />
         <Button onClick={handleComment}>COMMENT</Button>
       </NewComment>

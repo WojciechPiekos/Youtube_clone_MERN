@@ -120,7 +120,7 @@ const VideoFrame = styled.video`
   max-height: 720px;
   width: 100%;
   object-fit: cover;
-`
+`;
 
 export default function Video() {
   const { currentUser } = useSelector((state) => state.user);
@@ -180,20 +180,20 @@ export default function Video() {
 
   const handleSubscribe = async () => {
     try {
-      currentUser.subscribedUsers.includes(channel._id) ? 
-      await axios.put(`/api/users/unsub/${channel._id}`) :
-      await axios.put(`/api/users/sub/${channel._id}`)
-      dispatch(subscription(channel._id))
+      currentUser.subscribedUsers.includes(channel._id)
+        ? await axios.put(`/api/users/unsub/${channel._id}`)
+        : await axios.put(`/api/users/sub/${channel._id}`);
+      dispatch(subscription(channel._id));
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <Container>
       <Content>
         <VideoWrapper>
-          <VideoFrame src={currentVideo.videoUrl}/>
+          <VideoFrame src={currentVideo.videoUrl} />
         </VideoWrapper>
         <Title>{currentVideo.title}</Title>
         <Details>
@@ -244,7 +244,7 @@ export default function Video() {
           </Subscribe>
         </Channel>
         <Hr />
-        <Comments videoId={currentVideo._id}/>
+        <Comments videoId={currentVideo._id} />
       </Content>
       {/*<Recomendation>
         <Card type="sm"/>

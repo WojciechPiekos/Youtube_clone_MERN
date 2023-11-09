@@ -115,3 +115,5 @@
 20231108	12:03:17	5155cea8-9981-4573-92fc-87c55b396bb2	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
 20231108	12:03:17	a06d948d-dae5-477d-898f-fcb69edf5894	Error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"	GET	/api/users/find/undefined	undefined
 20231109	09:54:35	045b0e3c-8cd2-40e3-ab02-aef190fb7822	Error: You are not authenticated	PUT	/api/users/sub/6540edcbbb148dab68378040	http://localhost:5173
+20231109	13:08:19	11099103-f835-44e8-83f7-644face94adb	Error: Comment validation failed: desc: Path `desc` is required.	POST	/api/comments	http://localhost:5173
+20231109	13:08:23	c85458b7-b682-4df6-9524-58ccc4a1eb8b	Error: Comment validation failed: desc: Path `desc` is required.	POST	/api/comments	http://localhost:5173

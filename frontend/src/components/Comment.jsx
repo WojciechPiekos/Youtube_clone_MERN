@@ -16,6 +16,7 @@ const Avatar = styled.img`
 `;
 const Details = styled.div`
   display: flex;
+  width: 80%;
   flex-direction: column;
   gap: 10px;
   color: ${({ theme }) => theme.text};
@@ -35,12 +36,16 @@ const Text = styled.span`
 `;
 
 const DeleteButton = styled.div`
-  position: absolute;
-  right: 50px;
+  width: 20%;
   color: ${({ theme }) => theme.text};
+  cursor: pointer;
+  &:hover {
+    opacity: 70%;
+  }
 `;
 
 export default function Comment({ comment, currentUser, setDeleteComment }) {
+  
   const [user, setUser] = useState({});
 
   useEffect(() => {
