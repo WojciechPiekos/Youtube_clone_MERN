@@ -111,6 +111,9 @@ const Subscribe = styled.button`
   height: max-content;
   padding: 10px 20px;
   cursor: pointer;
+  &:hover {
+    opacity: 70%;
+  }
 `;
 
 const VideoFrame = styled.video`
