@@ -58,7 +58,6 @@ export default function Card({ type, video }) {
       try {
         const res = await axios.get(`/api/users/find/${video.userId}`);
         setChannel(res.data)
-        console.log(res.data)
       } catch (error) {
         console.log(error);
         setError(error.message)

@@ -11,27 +11,24 @@ const Container = styled.div`
 
 export default function Home({ type }) {
   const [videos, setVideos] = useState([]);
-  const [error,setError] = useState('')
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
         const res = await axios.get(`/api/videos/${type}`);
-        setVideos(res.data)
-        console.log(res.data)
+        setVideos(res.data);
       } catch (error) {
         console.log(error);
-        setError(error.message)
+        setError(error.message);
       }
     };
-    fetchVideos()
+    fetchVideos();
   }, [type]);
 
   return (
     <Container>
-      { videos && videos.map((video) => (
-          <Card key={video._id} video={video}/>
-      )) }
+      {videos && videos.map((video) => <Card key={video._id} video={video} />)}
     </Container>
   );
 }

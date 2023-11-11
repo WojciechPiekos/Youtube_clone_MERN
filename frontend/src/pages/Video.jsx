@@ -144,7 +144,6 @@ export default function Video() {
     const fetchUser = async () => {
       try {
         if (currentVideo.userId) {
-          console.log(currentVideo.userId);
           const channelRes = await axios.get(
             `/api/users/find/${currentVideo.userId}`
           );

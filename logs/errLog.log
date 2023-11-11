@@ -117,3 +117,9 @@
 20231109	09:54:35	045b0e3c-8cd2-40e3-ab02-aef190fb7822	Error: You are not authenticated	PUT	/api/users/sub/6540edcbbb148dab68378040	http://localhost:5173
 20231109	13:08:19	11099103-f835-44e8-83f7-644face94adb	Error: Comment validation failed: desc: Path `desc` is required.	POST	/api/comments	http://localhost:5173
 20231109	13:08:23	c85458b7-b682-4df6-9524-58ccc4a1eb8b	Error: Comment validation failed: desc: Path `desc` is required.	POST	/api/comments	http://localhost:5173
+20231111	11:59:45	dd9339a3-b3f4-4bfe-a668-60968b18f054	Error: $regex has to be a string	GET	/api/videos/search?query=video	undefined
+20231111	11:59:45	21381b15-f1c0-46ea-b261-e819f4af168c	Error: $regex has to be a string	GET	/api/videos/search?query=video	undefined
+20231111	11:59:51	b6fb6d49-a34e-4030-b424-5d0d7fdef648	Error: $regex has to be a string	GET	/api/videos/search?query=video%201	undefined
+20231111	11:59:56	ba08f909-6a8b-4a21-9430-98466c6f65bb	Error: $regex has to be a string	GET	/api/videos/search?query=video	undefined
+20231111	12:00:45	3366b421-33a0-44be-be83-114be8c34c75	Error: $regex has to be a string	GET	/api/videos/search?query=fsgfsbgfs	undefined
+20231111	12:00:45	aa591ab2-6eb9-4863-856e-75cbbd5c1538	Error: $regex has to be a string	GET	/api/videos/search?query=fsgfsbgfs	undefined

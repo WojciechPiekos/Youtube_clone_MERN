@@ -38,6 +38,7 @@ const Search = styled.div`
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  color: ${({theme}) => theme.text};
 `;
 
 const Input = styled.input`
@@ -117,9 +118,12 @@ const MenuFunction = styled.span`
 `;
 
 export default function Navbar() {
+  
   const { currentUser } = useSelector((state) => state.user);
+  
   const [menu, setMenu] = useState(false);
   const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("")
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -144,8 +148,8 @@ export default function Navbar() {
       <Container>
         <Wrapper>
           <Search>
-            <Input placeholder="Search..." />
-            <SearchIcon />
+            <Input placeholder="Search..." onChange={(e) => setQuery(e.target.value)}/>
+            <SearchIcon onClick={() => navigate(`/search?query=${query}`)}/>
           </Search>
           {currentUser ? (
             <UserDiv>

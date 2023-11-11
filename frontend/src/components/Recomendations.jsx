@@ -10,8 +10,6 @@ const Container = styled.div`
 function Recomendations({ tags }) {
   const [videos, setVideos] = useState([]);
 
-    console.log(tags)
-
   useEffect(() => {
     const fetchVideos = async () => {
       try {
